@@ -10,6 +10,8 @@ import {
   Input,
 } from "@mui/material";
 import { ethers } from "ethers";
+import { create } from "ipfs-http-client";
+import { Buffer } from "buffer";
 
 const provider = new ethers.providers.Web3Provider(window.ethereum); // Replace with your Infura project ID or any other Ethereum provider
 
@@ -44,9 +46,55 @@ const Upload = ({ managerContract, tokenPool, getTokenPool }) => {
     });
   };
 
-  const handleUpload = () => {
-    console.log("Selected File:", selectedImage);
-    console.log("Selected Option:", selectedOption);
+  const handleUpload = async (event) => {
+    try {
+      const projectId = "2T3eMNF8knKDGTpszZDyVBGuTrb";
+      const projectSecret = "83431740a593de7a6b5da01b98610c30";
+      const auth =
+        "Basic " +
+        Buffer.from(projectId + ":" + projectSecret).toString("base64");
+      const client = create({
+        host: "ipfs.infura.io",
+        port: 5001,
+        protocol: "https",
+        apiPath: "/api/v0",
+        headers: {
+          authorization: auth,
+        },
+      });
+
+      try {
+        const added = await client.add(selectedImage);
+        let cid = added.path;
+        callContractUpload(cid);
+      } catch (error) {
+        console.log("Error uploading file: ", error);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const callContractUpload = async (cid) => {
+    try {
+      const tx = await managerContract.uploadImage(cid, selectedOption);
+      console.log(tx);
+
+      if (tx) {
+        getTokens();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getTokens = async () => {
+    try {
+      const tx = await managerContract.getTokens();
+      console.log(tx);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {

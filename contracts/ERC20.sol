@@ -6,7 +6,7 @@ contract ERC20 {
     string public symbol;
     uint8 public decimals = 0;
     // uint256 public totalSupply = 1000 * 10**uint256(decimals);
-    uint256 public totalSupply = 1000;
+    uint256 public totalSupply = 100 * 10 ** 18;
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 

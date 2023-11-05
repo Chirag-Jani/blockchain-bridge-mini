@@ -1,5 +1,5 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const Admin = ({ managerContract }) => {
   const tokenNameRef = useRef("");
@@ -30,6 +30,16 @@ const Admin = ({ managerContract }) => {
       console.log(e);
     }
   };
+
+  // useEffect(() => {
+  //   const adminOrNot = async () => {
+  //     try {
+  //       const tx = await managerContract.owner();
+  //     } catch (e) {
+  //       console.error("Error:", e);
+  //     }
+  //   };
+  // });
 
   return (
     <Box p={4} maxWidth={400} margin="auto">

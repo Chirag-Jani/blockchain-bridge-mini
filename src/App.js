@@ -1,4 +1,4 @@
-// import Swapper from "./artifacts/contracts/Swapper.sol/Swapper.json";
+import Swapper from "./artifacts/contracts/Swapper.sol/Swapper.json";
 // import Auth from "./artifacts/contracts/Auth.sol/Auth.json";
 import Manager from "./artifacts/contracts/Manager.sol/Manager.json";
 import { ethers } from "ethers";
@@ -11,12 +11,14 @@ import Navbar from "./layout/Navbar";
 import Welcome from "./pages/Welcome";
 import Swap from "./pages/Swap";
 
-// const SWAPPER_CONTRACT = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 // const AUTH_CONTRACT = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-const MANAGER_CONTRACT = "0x0165878A594ca255338adfa4d48449f69242Eb8F";
+const MANAGER_CONTRACT = "0x09635F643e140090A9A8Dcd712eD6285858ceBef";
+const SWAPPER_CONTRACT = "0xc5a5C42992dECbae36851359345FE25997F5C42d";
 
 function App() {
+  const [currentAccount, setCurrentAccount] = useState(null);
   const [managerContract, setManagerContract] = useState();
+  const [swapperContract, setSwapperContract] = useState();
   const [tokenPool, setTokenPool] = useState([]);
 
   const getTokenPool = async () => {
@@ -28,26 +30,50 @@ function App() {
     }
   };
 
+  const checkCurrentAccount = async () => {
+    try {
+      // Check if MetaMask is installed
+      if (window.ethereum) {
+        // Request access to the user's accounts
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+
+        // Create an ethers provider using MetaMask's provider
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        // Get the signer (connected account)
+        const signer = provider.getSigner();
+
+        // Get the current connected account
+        const account = await signer.getAddress();
+
+        setCurrentAccount(account);
+      } else {
+        console.error("MetaMask is not installed");
+      }
+    } catch (error) {
+      console.error("Error checking current account:", error);
+    }
+  };
+
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const getContractInstance = async (addr) => {
+    const getContractInstance = async (addr, abi, settter) => {
       try {
-        const newContract = new ethers.Contract(
-          MANAGER_CONTRACT,
-          Manager.abi,
-          signer
-        );
+        const newContract = new ethers.Contract(addr, abi, signer);
         console.log("Contract: ", newContract);
-        setManagerContract(newContract);
+        settter(newContract);
+        checkCurrentAccount();
       } catch (e) {
         console.log(e);
         return null;
       }
     };
 
-    provider && getContractInstance();
+    provider &&
+      getContractInstance(MANAGER_CONTRACT, Manager.abi, setManagerContract) &&
+      getContractInstance(SWAPPER_CONTRACT, Swapper.abi, setSwapperContract);
     getTokenPool();
   }, []);
 
@@ -70,7 +96,18 @@ function App() {
             />
           }
         />
-        <Route path="/swap" element={<Swap />} />
+        <Route
+          path="/swap"
+          element={
+            <Swap
+              tokenPool={tokenPool}
+              getTokenPool={getTokenPool}
+              SWAPPER_CONTRACT={SWAPPER_CONTRACT}
+              currentAccount={currentAccount}
+              swapperContract={swapperContract}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

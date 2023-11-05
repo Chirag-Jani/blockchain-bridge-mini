@@ -48,7 +48,7 @@ contract Manager {
 
     function getTokens() public {
         ClaimInfo memory info = claimInfo[msg.sender];
-        transferTokens(info.tokenAddress, msg.sender, 10);
+        transferTokens(info.tokenAddress, msg.sender, 10 * 10 ** 18);
     }
 
     function getTokenPool() public view returns (address[] memory) {

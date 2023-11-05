@@ -7,7 +7,7 @@ contract Manager {
     event TokenCreated(address indexed creator, address indexed tokenAddress);
     event TokensTransferred(address indexed tokenAddress, address indexed to, uint256 amount);
 
-    address public immutable owner;
+    address public owner;
 
     struct ClaimInfo {
         address user;

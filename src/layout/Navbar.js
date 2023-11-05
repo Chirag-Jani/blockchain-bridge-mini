@@ -9,7 +9,7 @@ const Navbar = () => {
         <Typography
           variant="h6"
           component={Link}
-          to="/"
+          to="/home"
           sx={{ flexGrow: 1, color: "white", textDecoration: "none" }}
         >
           TeX
@@ -22,6 +22,9 @@ const Navbar = () => {
         </Button>
         <Button color="inherit" component={Link} to="/swap">
           Swap ETH
+        </Button>
+        <Button color="inherit" component={Link} to="/">
+          Login
         </Button>
       </Toolbar>
     </AppBar>

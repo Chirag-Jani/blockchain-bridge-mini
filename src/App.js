@@ -1,5 +1,5 @@
 import Swapper from "./artifacts/contracts/Swapper.sol/Swapper.json";
-// import Auth from "./artifacts/contracts/Auth.sol/Auth.json";
+import AuthContract from "./artifacts/contracts/Auth.sol/Auth.json";
 import Manager from "./artifacts/contracts/Manager.sol/Manager.json";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
@@ -10,15 +10,17 @@ import Upload from "./pages/Upload";
 import Navbar from "./layout/Navbar";
 import Welcome from "./pages/Welcome";
 import Swap from "./pages/Swap";
+import Auth from "./pages/Auth";
 
-// const AUTH_CONTRACT = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-const MANAGER_CONTRACT = "0x09635F643e140090A9A8Dcd712eD6285858ceBef";
+const MANAGER_CONTRACT = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
 const SWAPPER_CONTRACT = "0xc5a5C42992dECbae36851359345FE25997F5C42d";
+const AUTH_CONTRACT = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null);
   const [managerContract, setManagerContract] = useState();
   const [swapperContract, setSwapperContract] = useState();
+  const [authContract, setAuthContract] = useState();
   const [tokenPool, setTokenPool] = useState([]);
 
   const getTokenPool = async () => {
@@ -74,6 +76,7 @@ function App() {
     provider &&
       getContractInstance(MANAGER_CONTRACT, Manager.abi, setManagerContract) &&
       getContractInstance(SWAPPER_CONTRACT, Swapper.abi, setSwapperContract);
+    getContractInstance(AUTH_CONTRACT, AuthContract.abi, setAuthContract);
     getTokenPool();
   }, []);
 
@@ -81,10 +84,21 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route
+          path="/"
+          element={
+            <Auth authContract={authContract} currentAccount={currentAccount} />
+          }
+        />
+        <Route path="/home" element={<Welcome />} />
         <Route
           path="/manage"
-          element={<Admin managerContract={managerContract} />}
+          element={
+            <Admin
+              managerContract={managerContract}
+              currentAccount={currentAccount}
+            />
+          }
         />
         <Route
           path="/upload"

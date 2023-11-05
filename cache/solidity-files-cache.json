@@ -38,8 +38,8 @@
       ]
     },
     "/Users/uniqual/Documents/Jani/mini_jani/contracts/ERC20.sol": {
-      "lastModificationDate": 1699163335925,
-      "contentHash": "1fb80b84d7c92dd8319ad93ec05001bb",
+      "lastModificationDate": 1699177229020,
+      "contentHash": "781b751be2b7f230df97b2debba14e5f",
       "sourceName": "contracts/ERC20.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -74,8 +74,8 @@
       ]
     },
     "/Users/uniqual/Documents/Jani/mini_jani/contracts/Manager.sol": {
-      "lastModificationDate": 1699163302318,
-      "contentHash": "b5a6fb091f162c867a97e327604936e5",
+      "lastModificationDate": 1699177238878,
+      "contentHash": "3d34381b7b812bcb957ff12a43d0d60d",
       "sourceName": "contracts/Manager.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -102,14 +102,87 @@
         }
       },
       "imports": [
-        "./ERC20.sol",
-        "./Auth.sol"
+        "./ERC20.sol"
       ],
       "versionPragmas": [
         "^0.8.20"
       ],
       "artifacts": [
         "Manager"
+      ]
+    },
+    "/Users/uniqual/Documents/Jani/mini_jani/contracts/Swapper.sol": {
+      "lastModificationDate": 1699177368598,
+      "contentHash": "2ff8c172a3bcf7a784ab2d88cbba3760",
+      "sourceName": "contracts/Swapper.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Swapper"
+      ]
+    },
+    "/Users/uniqual/Documents/Jani/mini_jani/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1699177279179,
+      "contentHash": "5517c8678c18eb1a8ba58810e7ca39ca",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20"
       ]
     }
   }

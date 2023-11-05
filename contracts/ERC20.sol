@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 contract ERC20 {
     string public name;
     string public symbol;
-    uint8 public decimals = 18;
+    uint8 public decimals = 0;
     // uint256 public totalSupply = 1000 * 10**uint256(decimals);
     uint256 public totalSupply = 1000;
     mapping(address => uint256) public balanceOf;

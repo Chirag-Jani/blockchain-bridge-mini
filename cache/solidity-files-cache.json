@@ -74,8 +74,8 @@
       ]
     },
     "/Users/uniqual/Documents/Jani/mini_jani/contracts/Manager.sol": {
-      "lastModificationDate": 1699192203649,
-      "contentHash": "2cf331e512aad19e1c882bc0e1b5f935",
+      "lastModificationDate": 1699200726009,
+      "contentHash": "12f8e92a3282711587d99102e9ab0dbc",
       "sourceName": "contracts/Manager.sol",
       "solcConfig": {
         "version": "0.8.20",

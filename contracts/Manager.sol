@@ -17,7 +17,7 @@ contract Manager {
 
     mapping(address user => ClaimInfo userClaim) public claimInfo;
 
-    address[] public tokenPool;
+    address[] tokenPool;
 
     constructor() {
         owner = msg.sender;
@@ -49,5 +49,9 @@ contract Manager {
     function getTokens() public {
         ClaimInfo memory info = claimInfo[msg.sender];
         transferTokens(info.tokenAddress, msg.sender, 10);
+    }
+
+    function getTokenPool() public view returns (address[] memory) {
+        return tokenPool;
     }
 }

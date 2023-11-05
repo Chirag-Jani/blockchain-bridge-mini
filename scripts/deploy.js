@@ -21,3 +21,11 @@ main("Manager").catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+// main("Swapper").catch((error) => {
+//   console.error(error);
+//   process.exitCode = 1;
+// });
+// main("Auth").catch((error) => {
+//   console.error(error);
+//   process.exitCode = 1;
+// });

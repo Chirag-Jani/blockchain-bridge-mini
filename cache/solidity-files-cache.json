@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/uniqual/Documents/Jani/mini_jani/contracts/Auth.sol": {
-      "lastModificationDate": 1699163318482,
+      "lastModificationDate": 1699177219557,
       "contentHash": "f61cf64c77f0672ca349a2184bd06e50",
       "sourceName": "contracts/Auth.sol",
       "solcConfig": {
@@ -74,8 +74,8 @@
       ]
     },
     "/Users/uniqual/Documents/Jani/mini_jani/contracts/Manager.sol": {
-      "lastModificationDate": 1699177238878,
-      "contentHash": "3d34381b7b812bcb957ff12a43d0d60d",
+      "lastModificationDate": 1699192203649,
+      "contentHash": "2cf331e512aad19e1c882bc0e1b5f935",
       "sourceName": "contracts/Manager.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -112,8 +112,8 @@
       ]
     },
     "/Users/uniqual/Documents/Jani/mini_jani/contracts/Swapper.sol": {
-      "lastModificationDate": 1699177368598,
-      "contentHash": "2ff8c172a3bcf7a784ab2d88cbba3760",
+      "lastModificationDate": 1699177398753,
+      "contentHash": "d9193ea9af188b7e937473c6b56a8161",
       "sourceName": "contracts/Swapper.sol",
       "solcConfig": {
         "version": "0.8.20",

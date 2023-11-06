@@ -134,10 +134,16 @@ const Swap = ({
           onChange={handleNumberOfTokensChange}
         />
       </Box>
+
       <Button variant="contained" color="primary" onClick={handleSwap}>
         Swap Tokens
       </Button>
-      <Button variant="contained" color="primary" onClick={withdrawEth}>
+      <Button
+        variant="contained"
+        color="error"
+        onClick={withdrawEth}
+        sx={{ mx: 2 }}
+      >
         Withdraw ETH
       </Button>
     </Box>

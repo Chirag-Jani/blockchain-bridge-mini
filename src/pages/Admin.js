@@ -46,7 +46,7 @@ const Admin = ({ managerContract, currentAccount }) => {
 
   return (
     <>
-      {admin == currentAccount ? (
+      {admin === currentAccount ? (
         <Box p={4} maxWidth={400} margin="auto">
           <Typography
             variant="h4"
@@ -82,7 +82,16 @@ const Admin = ({ managerContract, currentAccount }) => {
         </Box>
       ) : (
         <>
-          <h1>Unauthorized!!</h1>
+          <Typography
+            component={"h2"}
+            variant="h3"
+            sx={{
+              textAlign: "center",
+              m: 5,
+            }}
+          >
+            Unauthorized!!
+          </Typography>
         </>
       )}
     </>

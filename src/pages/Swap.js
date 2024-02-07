@@ -82,7 +82,7 @@ const Swap = ({
       const tx = await swapperContract.withdrawEther();
       console.log("Withdrawal Done!!!!");
     } catch (e) {
-      console.log(e);
+      console.log("----------------------", e.message);
     }
   };
 
